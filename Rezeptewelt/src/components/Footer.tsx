@@ -4,19 +4,19 @@ export default function Footer() {
   return (
     <footer>
       <NavLink to="/" className="logo-container">
-        <img src="" alt="Logo" /> <h1>Die Rezeptweltl</h1>
+        <img src="../img/Icon.png" alt="Logo" /> <h1>Die Rezeptweltl</h1>
       </NavLink>
       <nav className="social_media">
         <a href="">
-          <img src="" alt="insta" />
+          <img src="../img/pages.png" alt="insta" />
         </a>
         <a href="">
-          <img src="" alt="Youtube" />
+          <img src="../img/youtube.png" alt="Youtube" />
         </a>
         <a href="">
-          <img src="" alt="Twitter" />
+          <img src="../img/twitter.png" alt="Twitter" />
         </a>
-        <a href="">
+        <a href="../img/pinterest.png">
           <img src="" alt="pinterest" />
         </a>
       </nav>
