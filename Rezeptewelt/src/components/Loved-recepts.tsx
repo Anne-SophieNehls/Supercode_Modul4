@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
-
-const getAllArticles = async () => {
-  const result = await supabase.from("recipes").select("*, categories(*)");
-  console.log(result.data);
-  return result;
-};
+import { Link } from "react-router-dom";
 
 type Recipies =
   | {
@@ -15,6 +10,7 @@ type Recipies =
       id: string;
       instructions: string;
       name: string;
+      image_url: string | null;
       servings: number;
       categories: {
         created_at: string;
@@ -24,11 +20,17 @@ type Recipies =
     }[]
   | null;
 
+const getAllRecepts = async () => {
+  const result = await supabase.from("recipes").select("*, categories(*)");
+  console.log(result.data);
+  return result;
+};
+
 export default function LovedRecepts() {
   const [food, setFood] = useState<Recipies>(null);
 
   useEffect(() => {
-    getAllArticles().then((result) => {
+    getAllRecepts().then((result) => {
       setFood(result.data);
     });
   }, []);
@@ -37,35 +39,20 @@ export default function LovedRecepts() {
     <section>
       <h2>Die beliebtesten Rezepte</h2>
       <div className="container-loved-recepts">
-        <article>
-          {food?.map((rezept)=>
-          )}
-          <img src="" alt="" />
-          <h4>Waffel</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit,
-            ex.
-          </p>
-          <button>zum Rezept</button>
-        </article>
-        <article>
-          <img src="" alt="" />
-          <h4>Waffel</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit,
-            ex.
-          </p>
-          <button>zum Rezept</button>
-        </article>
-        <article>
-          <img src="" alt="" />
-          <h4>Waffel</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit,
-            ex.
-          </p>
-          <button>zum Rezept</button>
-        </article>
+        {food?.map((food) => (
+          <article>
+            <img
+              src={
+                food.image_url ||
+                "https://static.thenounproject.com/png/2932881-200.png"
+              }
+              alt=""
+            />
+            <h4>{food.name}</h4>
+            <p>{food.description}</p>
+            <Link to={`/recept/${food.id}`}> Zum Rezept</Link>
+          </article>
+        ))}
       </div>
     </section>
   );
