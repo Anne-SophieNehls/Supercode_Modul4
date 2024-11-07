@@ -4,6 +4,9 @@ import Homepage from "./pages/Homepage";
 import DetailPage from "./pages/DetailPage";
 import ReceptPage from "./pages/RezeptPage";
 import AboutUsPage from "./pages/Uber-UnsPage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AddRecipies from "./pages/AddReceptPage";
+import LoginPage from "./pages/Loginpage";
 
 const router = createBrowserRouter([
   {
@@ -23,15 +26,25 @@ const router = createBrowserRouter([
         path: "/about-us",
         element: <AboutUsPage />,
       },
+      {
+        path: "/add-recept",
+        element: <AddRecipies />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
     ],
   },
 ]);
 
+const client = new QueryClient();
+
 function App() {
   return (
-    <div>
+    <QueryClientProvider client={client}>
       <RouterProvider router={router} />
-    </div>
+    </QueryClientProvider>
   );
 }
 

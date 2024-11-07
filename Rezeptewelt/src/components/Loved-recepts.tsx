@@ -21,7 +21,10 @@ type Recipies =
   | null;
 
 const getAllRecepts = async () => {
-  const result = await supabase.from("recipes").select("*, categories(*)");
+  const result = await supabase
+    .from("recipes")
+    .select("*, categories(*)")
+    .limit(3);
   console.log(result.data);
   return result;
 };

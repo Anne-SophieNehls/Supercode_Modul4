@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer>
       <NavLink to="/" className="logo-container">
-        <img src="../img/Icon.png" alt="Logo" /> <h1>Die Rezeptweltl</h1>
+        <img src="../img/Icon.png" alt="Logo" /> <h1>Die Rezeptwelt</h1>
       </NavLink>
       <nav className="social_media">
         <a href="">
@@ -16,8 +16,8 @@ export default function Footer() {
         <a href="">
           <img src="../img/twitter.png" alt="Twitter" />
         </a>
-        <a href="../img/pinterest.png">
-          <img src="" alt="pinterest" />
+        <a href="">
+          <img src="../img/pinterest.png" alt="pinterest" />
         </a>
       </nav>
       <NavLink to="/Login">Login</NavLink>
