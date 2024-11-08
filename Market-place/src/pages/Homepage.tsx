@@ -1,11 +1,8 @@
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { QueryData, createClient } from "@supabase/supabase-js";
-import { Database } from "../types/supabase";
 
-const supabaseClient = createClient<Database>(supabaseUrl, supabaseKey);
-
-type Article =
+/* type Article =
   | {
       id: string;
       titel: string;
@@ -16,7 +13,7 @@ type Article =
         description: string | null;
       } | null;
     }[]
-  | null;
+  | null; */
 
 export default function Homepage() {
   const [articles, setArticles] = useState<ArticleData>([]);
@@ -36,7 +33,6 @@ export default function Homepage() {
         categories(
           id,
           name,
-          created_at,
           description
           )
         `

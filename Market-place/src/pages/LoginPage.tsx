@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
-import { useUserContext } from "../context/userContext";
+import { useUserContext } from "../components/userContext";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {

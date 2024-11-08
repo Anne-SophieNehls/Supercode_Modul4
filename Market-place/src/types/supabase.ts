@@ -18,6 +18,7 @@ export type Database = {
           image: string | null
           negotiable: boolean
           price: number
+          status: Database["public"]["Enums"]["selling_status"] | null
           title: string
         }
         Insert: {
@@ -28,6 +29,7 @@ export type Database = {
           image?: string | null
           negotiable?: boolean
           price: number
+          status?: Database["public"]["Enums"]["selling_status"] | null
           title: string
         }
         Update: {
@@ -38,6 +40,7 @@ export type Database = {
           image?: string | null
           negotiable?: boolean
           price?: number
+          status?: Database["public"]["Enums"]["selling_status"] | null
           title?: string
         }
         Relationships: [

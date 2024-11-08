@@ -1,28 +1,25 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
-import { useUserContext } from "../context/userContext";
-import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../components/userContext";
 
-export default function LoginPage() {
+export default function RegistrationPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setUser } = useUserContext();
-  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const result = await supabase.auth.signInWithPassword({ email, password });
+    const result = await supabase.auth.signUp({ email, password });
     if (result.error) {
       alert(result.error.message);
     } else {
       setUser(result.data.user);
-      navigate("/");
     }
   };
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -36,7 +33,7 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Log in</button>
+        <button>Sign up</button>
       </form>
     </div>
   );
