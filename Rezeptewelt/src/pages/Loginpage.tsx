@@ -22,6 +22,10 @@ export default function LoginPage() {
 
   return (
     <div>
+      <h3 className="bg-img">
+        Lassen Sie sich inspirieren, kochen Sie mit Leidenschaft und erleben Sie
+        unvergessliche Momente bei Tisch.
+      </h3>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <input

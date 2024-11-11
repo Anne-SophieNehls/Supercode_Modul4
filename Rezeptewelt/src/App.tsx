@@ -7,6 +7,7 @@ import AboutUsPage from "./pages/Uber-UnsPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AddRecipies from "./pages/AddReceptPage";
 import LoginPage from "./pages/Loginpage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/signup",
+        element: <RegistrationPage />,
       },
     ],
   },

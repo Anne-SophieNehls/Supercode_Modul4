@@ -1,6 +1,10 @@
 export default function AboutUsPage() {
   return (
     <section>
+      <h3 className="bg-img">
+        Lassen Sie sich inspirieren, kochen Sie mit Leidenschaft und erleben Sie
+        unvergessliche Momente bei Tisch.
+      </h3>
       <p>
         Hallo, wir sind Amanda und Pedro und freuen uns, unsere Arbeit auf
         Rezeptwelt vorstellen zu können. Bei der Erkundung dieser erstaunlichen

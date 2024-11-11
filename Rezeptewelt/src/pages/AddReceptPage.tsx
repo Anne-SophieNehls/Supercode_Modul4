@@ -65,113 +65,120 @@ export default function RecipeCreatePage() {
   console.log(ingredients);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>New Recipe</h1>
-      <button>Submit</button>
-      <br />
-      <br />
-      <input
-        type="text"
-        value={recipe.name}
-        required
-        onChange={(e) =>
-          setRecipe((prev) => ({ ...prev, name: e.target.value }))
-        }
-        placeholder="name"
-      />
-      <br />
-      <input
-        type="text"
-        value={recipe.description}
-        onChange={(e) =>
-          setRecipe((prev) => ({ ...prev, description: e.target.value }))
-        }
-        placeholder="description"
-      />
-      <br />
-      <input
-        type="text"
-        value={recipe.instructions}
-        onChange={(e) =>
-          setRecipe((prev) => ({ ...prev, instructions: e.target.value }))
-        }
-        placeholder="instructions"
-      />
-      <br />
-      <input
-        type="number"
-        value={recipe.servings}
-        onChange={(e) =>
-          setRecipe((prev) => ({ ...prev, servings: Number(e.target.value) }))
-        }
-        placeholder="servings"
-      />
-      <br />
-      <div>
-        <h3>Ingredients</h3>
-        <button type="button" onClick={addIngredient}>
-          Add Ingredient
-        </button>
+    <div>
+      {" "}
+      <h3 className="bg-img">
+        Lassen Sie sich inspirieren, kochen Sie mit Leidenschaft und erleben Sie
+        unvergessliche Momente bei Tisch.
+      </h3>
+      <form onSubmit={handleSubmit}>
+        <h1>New Recipe</h1>
+        <button>Submit</button>
+        <br />
+        <br />
+        <input
+          type="text"
+          value={recipe.name}
+          required
+          onChange={(e) =>
+            setRecipe((prev) => ({ ...prev, name: e.target.value }))
+          }
+          placeholder="name"
+        />
+        <br />
+        <input
+          type="text"
+          value={recipe.description}
+          onChange={(e) =>
+            setRecipe((prev) => ({ ...prev, description: e.target.value }))
+          }
+          placeholder="description"
+        />
+        <br />
+        <input
+          type="text"
+          value={recipe.instructions}
+          onChange={(e) =>
+            setRecipe((prev) => ({ ...prev, instructions: e.target.value }))
+          }
+          placeholder="instructions"
+        />
+        <br />
+        <input
+          type="number"
+          value={recipe.servings}
+          onChange={(e) =>
+            setRecipe((prev) => ({ ...prev, servings: Number(e.target.value) }))
+          }
+          placeholder="servings"
+        />
+        <br />
         <div>
-          {ingredients.map((ingredient, index) => {
-            const setIngredient = (newIngredient: Ingredient) =>
-              setIngredients((prev) => {
-                const before = prev.slice(0, index);
-                const after = prev.slice(index + 1);
-                return [...before, newIngredient, ...after];
-              });
+          <h3>Ingredients</h3>
+          <button type="button" onClick={addIngredient}>
+            Add Ingredient
+          </button>
+          <div>
+            {ingredients.map((ingredient, index) => {
+              const setIngredient = (newIngredient: Ingredient) =>
+                setIngredients((prev) => {
+                  const before = prev.slice(0, index);
+                  const after = prev.slice(index + 1);
+                  return [...before, newIngredient, ...after];
+                });
 
-            return (
-              <div key={index}>
-                <input
-                  type="text"
-                  value={ingredient.name}
-                  onChange={(e) =>
-                    setIngredient({
-                      ...ingredient,
-                      name: e.target.value,
-                    })
-                  }
-                  placeholder="name"
-                />
-                <input
-                  type="text"
-                  value={ingredient.unit}
-                  onChange={(e) =>
-                    setIngredient({
-                      ...ingredient,
-                      unit: e.target.value,
-                    })
-                  }
-                  placeholder="unit"
-                />
-                <input
-                  type="number"
-                  value={ingredient.quantity}
-                  onChange={(e) =>
-                    setIngredient({
-                      ...ingredient,
-                      quantity: Number(e.target.value),
-                    })
-                  }
-                  placeholder="quantity"
-                />
-                <input
-                  type="text"
-                  value={ingredient.additionalInfo}
-                  onChange={(e) =>
-                    setIngredient({
-                      ...ingredient,
-                      additionalInfo: e.target.value,
-                    })
-                  }
-                  placeholder="additionalInfo"
-                />
-              </div>
-            );
-          })}
+              return (
+                <div key={index}>
+                  <input
+                    type="text"
+                    value={ingredient.name}
+                    onChange={(e) =>
+                      setIngredient({
+                        ...ingredient,
+                        name: e.target.value,
+                      })
+                    }
+                    placeholder="name"
+                  />
+                  <input
+                    type="text"
+                    value={ingredient.unit}
+                    onChange={(e) =>
+                      setIngredient({
+                        ...ingredient,
+                        unit: e.target.value,
+                      })
+                    }
+                    placeholder="unit"
+                  />
+                  <input
+                    type="number"
+                    value={ingredient.quantity}
+                    onChange={(e) =>
+                      setIngredient({
+                        ...ingredient,
+                        quantity: Number(e.target.value),
+                      })
+                    }
+                    placeholder="quantity"
+                  />
+                  <input
+                    type="text"
+                    value={ingredient.additionalInfo}
+                    onChange={(e) =>
+                      setIngredient({
+                        ...ingredient,
+                        additionalInfo: e.target.value,
+                      })
+                    }
+                    placeholder="additionalInfo"
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }

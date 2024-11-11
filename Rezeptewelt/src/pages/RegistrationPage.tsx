@@ -19,6 +19,10 @@ export default function RegistrationPage() {
 
   return (
     <div>
+      <h3 className="bg-img">
+        Lassen Sie sich inspirieren, kochen Sie mit Leidenschaft und erleben Sie
+        unvergessliche Momente bei Tisch.
+      </h3>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <input
