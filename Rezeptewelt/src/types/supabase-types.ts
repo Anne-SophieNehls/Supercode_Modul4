@@ -65,35 +65,65 @@ export type Database = {
           },
         ]
       }
+      profiles: {
+        Row: {
+          first_name: string | null
+          id: string
+          image: string | null
+          last_name: string | null
+          Nickname: string | null
+        }
+        Insert: {
+          first_name?: string | null
+          id: string
+          image?: string | null
+          last_name?: string | null
+          Nickname?: string | null
+        }
+        Update: {
+          first_name?: string | null
+          id?: string
+          image?: string | null
+          last_name?: string | null
+          Nickname?: string | null
+        }
+        Relationships: []
+      }
       recipes: {
         Row: {
           category_id: string | null
           created_at: string | null
+          created_by: string
           description: string
           id: string
           image_url: string | null
           instructions: string
           name: string
+          rating: number | null
           servings: number
         }
         Insert: {
           category_id?: string | null
           created_at?: string | null
+          created_by?: string
           description: string
           id?: string
           image_url?: string | null
           instructions: string
           name: string
+          rating?: number | null
           servings: number
         }
         Update: {
           category_id?: string | null
           created_at?: string | null
+          created_by?: string
           description?: string
           id?: string
           image_url?: string | null
           instructions?: string
           name?: string
+          rating?: number | null
           servings?: number
         }
         Relationships: [
@@ -102,6 +132,13 @@ export type Database = {
             columns: ["category_id"]
             isOneToOne: false
             referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "recipes_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]

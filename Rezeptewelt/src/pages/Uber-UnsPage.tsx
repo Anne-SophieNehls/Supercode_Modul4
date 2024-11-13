@@ -1,10 +1,10 @@
+import ParallaxImg from "../components/parallax-img";
+
 export default function AboutUsPage() {
   return (
     <section>
-      <h3 className="bg-img">
-        Lassen Sie sich inspirieren, kochen Sie mit Leidenschaft und erleben Sie
-        unvergessliche Momente bei Tisch.
-      </h3>
+      <ParallaxImg />
+      <br />
       <p>
         Hallo, wir sind Amanda und Pedro und freuen uns, unsere Arbeit auf
         Rezeptwelt vorstellen zu können. Bei der Erkundung dieser erstaunlichen
@@ -13,6 +13,7 @@ export default function AboutUsPage() {
         Rezeptwelt ist ein Ort, an dem sich erfahrene Köche und Kochanfänger in
         ihrer Leidenschaft für das Essen vereinen können.
       </p>
+      <br />
       <p>
         Was uns besonders begeistert hat, war die Vielfalt der Rezepte. Von
         traditionellen, gemütlichen Gerichten bis hin zu innovativeren
@@ -21,6 +22,7 @@ export default function AboutUsPage() {
         sicherzustellen, dass die Ergebnisse stets schmackhaft sind und es sich
         lohnt, sie zu teilen.
       </p>
+      <br />
       <p>
         Neben den Rezepten bietet Rezeptwelt auch nützliche Tipps zur
         Verbesserung der eigenen Kochkünste. Von Zubereitungstechniken bis hin
@@ -29,6 +31,7 @@ export default function AboutUsPage() {
         und integrative Umgebung, in der jeder ermutigt wird, in die Kunst des
         Kochens einzutauchen und neue Möglichkeiten zu entdecken.
       </p>
+      <br />
       <p>
         Kurz gesagt, Rezeptwelt ist ein inspirierender gastronomischer Raum, der
         uns einlädt, unsere Leidenschaft für das Kochen zu entdecken, zu

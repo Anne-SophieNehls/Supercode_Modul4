@@ -23,6 +23,7 @@ export default function Header() {
           <div>
             {!user && <NavLink to="/login">Login</NavLink>}
             {!user && <NavLink to="/signup">Sign up</NavLink>}
+            {/* {user && <button onClick={}>to Profil</button>} */}
             {user && <button onClick={handleLogoutClick}>Logout</button>}
           </div>
         </nav>
