@@ -13,6 +13,7 @@ export type Database = {
         Row: {
           category_id: string
           created_at: string
+          created_by: string
           description: string
           id: string
           image: string | null
@@ -24,6 +25,7 @@ export type Database = {
         Insert: {
           category_id: string
           created_at?: string
+          created_by?: string
           description: string
           id?: string
           image?: string | null
@@ -35,6 +37,7 @@ export type Database = {
         Update: {
           category_id?: string
           created_at?: string
+          created_by?: string
           description?: string
           id?: string
           image?: string | null
@@ -49,6 +52,13 @@ export type Database = {
             columns: ["category_id"]
             isOneToOne: false
             referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "articles_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
@@ -77,13 +87,17 @@ export type Database = {
           created_at: string
           id: number
           read: boolean
+          recipient_id: string
+          sender_id: string
           text: string
         }
         Insert: {
           article_id: string
           created_at?: string
-          id?: number
+          id: number
           read?: boolean
+          recipient_id?: string
+          sender_id: string
           text: string
         }
         Update: {
@@ -91,6 +105,8 @@ export type Database = {
           created_at?: string
           id?: number
           read?: boolean
+          recipient_id?: string
+          sender_id?: string
           text?: string
         }
         Relationships: [
@@ -101,7 +117,39 @@ export type Database = {
             referencedRelation: "articles"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "messages_recipient_id_fkey"
+            columns: ["recipient_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "messages_sender_id_fkey"
+            columns: ["sender_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
         ]
+      }
+      profiles: {
+        Row: {
+          first_name: string | null
+          id: string
+          last_name: string | null
+        }
+        Insert: {
+          first_name?: string | null
+          id: string
+          last_name?: string | null
+        }
+        Update: {
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+        }
+        Relationships: []
       }
     }
     Views: {
