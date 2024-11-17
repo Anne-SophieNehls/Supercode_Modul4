@@ -6,7 +6,7 @@ export default function DetailPage() {
   const { id } = useParams();
 
   const recipesQuery = useQuery({
-    queryKey: ["articles, singleArticle", id],
+    queryKey: ["recipes, singleRecipe", id],
     queryFn: async () => {
       const result = await supabase
         .from("recipes")
@@ -19,6 +19,7 @@ export default function DetailPage() {
       name,
       image_url,
       servings,
+      ingredients(*),
       categories(
         created_at,
         id,
@@ -27,36 +28,44 @@ export default function DetailPage() {
         )
         .eq("id", id!)
         .single();
+
+      if (result.error) {
+        throw result.error;
+      }
       return result.data;
     },
   });
+
   if (recipesQuery.isPending) {
     return "Loading ...";
   }
 
-  if (!recipesQuery.isError) {
+  if (recipesQuery.isError) {
     return "Sorry, Article not found 404";
   }
   const recipe = recipesQuery.data;
 
   return (
     <section>
-      <p>daten zu {id}</p>
-      <img src={`${recipe?.id}`} alt="picture of food or drink" />
-      <h1>{recipe?.name}</h1>
+      {/* <p>daten zu {id}</p> */}
+      <div style={{ backgroundImage: `url(${recipe?.image_url})` }}>
+        <h1>{recipe?.name}</h1>
+      </div>
+
       <p>{recipe?.servings}</p>
       <p>{recipe?.categories?.name}</p>
       <br />
       <p>{recipe?.description}</p>
       <br />
       <ul>
-        {/*       <li>{recipe?.incridiens.map}</li>
-         */}{" "}
+        {recipe.ingredients.map((ingredient) => (
+          <li>
+            {ingredient.name}: {ingredient.quantity} {ingredient.unit}
+          </li>
+        ))}
       </ul>
       <br />
       <p>{recipe?.instructions}</p>
     </section>
   );
 }
-
-// usePrarams(RRD) mit use single(supabase)

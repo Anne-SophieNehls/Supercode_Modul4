@@ -3,6 +3,8 @@ import LovedRecepts from "../components/Loved-recepts";
 import ParallaxImg from "../components/parallax-img";
 import { supabase } from "../lib/supabase";
 import { useQuery } from "@tanstack/react-query";
+import CategorySelect from "../components/CategorySelect";
+import RecipeCard from "../components/RecipeCard";
 
 export default function Homepage() {
   const [searchText, setSearchText] = useState("");
@@ -15,25 +17,25 @@ export default function Homepage() {
       const result = await supabase
         .from("recipes")
         .select("*, categories(*)")
-        .ilike("title", `%${searchText}%`);
+        .ilike("name", `%${searchText}%`);
       if (result.error) {
         throw result.error;
       }
       return result.data;
     },
   });
+  const recipes = getAllReceptsQuery;
 
   const handleSearch: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const value = inputRef.current?.value || "";
     setSearchText(value);
-    console.log(searchText);
   };
 
   if (getAllReceptsQuery.isPending) {
     return "...loading";
   }
-  if (getAllReceptsQuery.isError || !getAllReceptsQuery.data) {
+  if (getAllReceptsQuery.isError) {
     return "404. Sorry, something went wrong";
   }
 
@@ -43,7 +45,7 @@ export default function Homepage() {
       <LovedRecepts />
       <section>
         <h2>Search a Recipe</h2>
-        <form onSubmit={handleSearch} className="my-6 flex gap-2">
+        <form onSubmit={handleSearch}>
           <input
             ref={inputRef}
             type="text"
@@ -57,7 +59,7 @@ export default function Homepage() {
         </form>
         <h3>Here ist the search result </h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {recipes?.map((recipe) => (
+          {recipes.data?.map((recipe) => (
             <RecipeCard key={recipe.id} recipe={recipe} />
           ))}
         </div>

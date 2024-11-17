@@ -19,11 +19,11 @@ export default function Header() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/recept">Rezepte</NavLink>
           <NavLink to="/about-us">über uns</NavLink>
-          <NavLink to="/add-recept">Neues Rezept</NavLink>
           <div>
             {!user && <NavLink to="/login">Login</NavLink>}
             {!user && <NavLink to="/signup">Sign up</NavLink>}
-            {/* {user && <button onClick={}>to Profil</button>} */}
+            {user && <NavLink to="/add-recept">Add new Recipe</NavLink>}
+            {user && <NavLink to="/own-profil">to Profil</NavLink>}
             {user && <button onClick={handleLogoutClick}>Logout</button>}
           </div>
         </nav>

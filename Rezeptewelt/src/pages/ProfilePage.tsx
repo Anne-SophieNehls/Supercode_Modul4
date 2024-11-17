@@ -1,23 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { useUserContext } from "../context/userContext";
 import { supabase, getStorageURL } from "../lib/supabase";
+import { Link } from "react-router-dom";
 
 export default function OwnProfilPage() {
   const { user } = useUserContext();
 
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const [vorname, setVorname] = useState<string | null | undefined>("");
-  const [nachname, setNachname] = useState<string | null | undefined>("");
-  const [profilePath, setProfilePath] = useState<string | undefined>("");
+  const [vorname, setVorname] = useState<string | null>("");
+  const [nachname, setNachname] = useState<string | null>("");
+  const [nickname, setNickname] = useState<string | null>("");
 
-  const getUser = async () => {
-    const recipe = await supabase
+  //! Wird schon 👍
+  // :)
+  const [profilImg, setprofilImg] = useState<string | null>(null);
+
+  const getUserData = async () => {
+    const resultprofil = await supabase
       .from("profiles")
       .select("*")
       .eq("id", user?.id!)
       .single();
-    return recipe;
+    return resultprofil;
   };
 
   const handleFileUpload = async () => {
@@ -27,56 +32,57 @@ export default function OwnProfilPage() {
 
     if (file) {
       const uploadResult = await supabase.storage
-        .from("profilePhotos")
+        .from("image")
         .upload(`${user?.id}/${crypto.randomUUID()}`, file, { upsert: true });
       imagePath = uploadResult.data?.fullPath || null;
     }
-
-    const result = await supabase
-      .from("profiles")
-      .update({
-        image: imagePath,
-      })
-      .eq("id", user?.id!);
   };
 
   useEffect(() => {
-    getUser().then((result) => {
-      setVorname(result.data?.first_name);
-      setNachname(result.data?.last_name);
-      setProfilePath(result.data?.image!);
+    getUserData().then((result) => {
+      setVorname(result.data?.first_name || null);
+      setNachname(result.data?.last_name || null);
+      setprofilImg(result.data?.image!);
+      setNickname(result.data?.Nickname || null);
     });
   }, []);
 
-  const imageURL = getStorageURL(profilePath);
+  const imageURL = getStorageURL(profilImg);
 
   return (
-    <div className="profile">
+    <div>
       <h2>Profil</h2>
       <div>
-        <div className="profileData">
+        <div>
           <div>
+            <img
+              src={
+                imageURL ||
+                "https://media.istockphoto.com/id/1223671392/de/vektor/standardprofilbild-avatar-fotoplatzhalter-vektor-illustration.jpg?s=612x612&w=0&k=20&c=vtYE5RcgwgrJ1Zg6r66xN25LpXS_xsxZ8NqtvRQ9w6I="
+              }
+              alt="Profil Image"
+            />
+
             <p>
               Name: {vorname} {nachname}
             </p>
+            <p>Nickname: {nickname}</p>
             <p>E-Mail: {user?.email}</p>
-            <p>Angelegt: {new Date(user?.created_at!).toLocaleDateString()}</p>
             <p>
-              Zuletzt geändert:{" "}
-              {new Date(user?.updated_at!).toLocaleDateString()}
-            </p>
-            <p>
-              letzte Anmeldung:{" "}
-              {new Date(user?.last_sign_in_at!).toLocaleDateString()}
+              Mitglied seit: {new Date(user?.created_at!).toLocaleDateString()}
             </p>
           </div>
-          <div>
+          <form>
+            <h4>Daten ändern</h4>
+            <input type="text" placeholder="Vornamen" />
+            <input type="text" placeholder="Nachnamen" />
+            <input type="text" placeholder="Nicknamen" />
             <input type="file" ref={fileRef} />
-            <button onClick={handleFileUpload}>Upload</button>
-          </div>
+            <button onClick={handleFileUpload}>Upload new Profil </button>
+          </form>
         </div>
-        <img src={imageURL || "https://placehold.co/600x900"} alt="" />
       </div>
+      <Link to="/own-profil/my-recipes">Eigene Rezepte</Link>
     </div>
   );
 }

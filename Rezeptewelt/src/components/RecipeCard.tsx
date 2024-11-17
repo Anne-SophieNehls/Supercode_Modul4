@@ -1,25 +1,23 @@
 import { Link } from "react-router-dom";
 
 interface RecipesProps {
-  recipe:
-    | {
-        category_id: string | null;
-        created_at: string | null;
-        created_by: string;
-        description: string;
-        id: string;
-        image_url: string | null;
-        instructions: string;
-        name: string;
-        rating: number | null;
-        servings: number;
-        categories: {
-          created_at: string;
-          id: string;
-          name: string | null;
-        } | null;
-      }[]
-    | null;
+  recipe: {
+    category_id: string | null;
+    created_at: string | null;
+    created_by: string;
+    description: string;
+    id: string;
+    image_url: string | null;
+    instructions: string;
+    name: string;
+    rating: number | null;
+    servings: number;
+    categories: {
+      created_at: string;
+      id: string;
+      name: string | null;
+    } | null;
+  };
 }
 
 export default function RecipeCard({ recipe }: RecipesProps) {
@@ -35,7 +33,7 @@ export default function RecipeCard({ recipe }: RecipesProps) {
         alt="article image"
       />
       <Link to={`/articles/${recipe.id}`}>
-        <h3 className="font-semibold">{recipe.title}</h3>
+        <h3 className="font-semibold">{recipe.name}</h3>
       </Link>
       <p className="text-neutral-600">{recipe.description}</p>
     </div>
