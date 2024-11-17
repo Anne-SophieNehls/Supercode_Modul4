@@ -49,10 +49,10 @@ export default function DetailPage() {
     <section>
       {/* <p>daten zu {id}</p> */}
       <div style={{ backgroundImage: `url(${recipe?.image_url})` }}>
-        <h1>{recipe?.name}</h1>
+        <h1 className="headline rezept-headlinge">{recipe?.name}</h1>
       </div>
 
-      <p>{recipe?.servings}</p>
+      <p> Portionen: {recipe?.servings}</p>
       <p>{recipe?.categories?.name}</p>
       <br />
       <p>{recipe?.description}</p>

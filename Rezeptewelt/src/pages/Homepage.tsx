@@ -44,7 +44,7 @@ export default function Homepage() {
       <ParallaxImg />
       <LovedRecepts />
       <section>
-        <h2>Search a Recipe</h2>
+        <h1 className="headline">Search a Recipe</h1>
         <form onSubmit={handleSearch}>
           <input
             ref={inputRef}

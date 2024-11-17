@@ -13,7 +13,8 @@ export default function Header() {
       <div className="yellow-line"></div>
       <div className="container-nav">
         <NavLink to="/" className="logo-container">
-          <img src="../img/Icon.png" alt="Logo" /> <h1>Die Rezeptwelt</h1>
+          <img src="../img/Icon.png" alt="Logo" />
+          <h1>Die Rezeptwelt</h1>
         </NavLink>
         <nav className="menu">
           <NavLink to="/">Home</NavLink>

@@ -28,7 +28,7 @@ export default function ReceptPage() {
     <section>
       <ParallaxImg />
       <LovedRecepts />
-      <h2>Neuste Rezepte</h2>
+      <h2 className="headline">Neuste Rezepte</h2>
       <div className="container-loved-recepts">
         {food?.map((food) => (
           <article>

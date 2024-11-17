@@ -2,6 +2,7 @@ import { useState } from "react";
 import { supabase } from "../lib/supabase";
 import { useUserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
+import ParallaxImg from "../components/parallax-img";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -22,12 +23,9 @@ export default function LoginPage() {
 
   return (
     <div>
-      <h3 className="bg-img">
-        Lassen Sie sich inspirieren, kochen Sie mit Leidenschaft und erleben Sie
-        unvergessliche Momente bei Tisch.
-      </h3>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <ParallaxImg />
+      <h1 className="headline">Login</h1>
+      <form className="login--sign-up" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">E-Mail</label>
           <input

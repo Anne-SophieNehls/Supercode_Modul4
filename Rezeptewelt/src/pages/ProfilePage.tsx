@@ -51,7 +51,7 @@ export default function OwnProfilPage() {
 
   return (
     <div>
-      <h2>Profil</h2>
+      <h2 className="headline">Profil</h2>
       <div>
         <div>
           <div>

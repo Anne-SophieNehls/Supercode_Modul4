@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
 import { useUserContext } from "../context/userContext";
+import ParallaxImg from "../components/parallax-img";
 
 export default function RegistrationPage() {
   const [email, setEmail] = useState("");
@@ -18,13 +19,10 @@ export default function RegistrationPage() {
   };
 
   return (
-    <div>
-      <h3 className="bg-img">
-        Lassen Sie sich inspirieren, kochen Sie mit Leidenschaft und erleben Sie
-        unvergessliche Momente bei Tisch.
-      </h3>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+    <section>
+      <ParallaxImg />
+      <h1 className="headline">Sign Up</h1>
+      <form className="login--sign-up" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">E-Mail</label>
           <input
@@ -47,6 +45,6 @@ export default function RegistrationPage() {
         </div>
         <button>Sign up</button>
       </form>
-    </div>
+    </section>
   );
 }

@@ -20,7 +20,7 @@ export default function MyRecipesPage() {
 
   return (
     <section>
-      <h2>Deine Rezepte</h2>
+      <h2 className="headline">Deine Rezepte</h2>
       <div className="container-loved-recepts">
         {recipes?.map((recipe) => (
           <article>

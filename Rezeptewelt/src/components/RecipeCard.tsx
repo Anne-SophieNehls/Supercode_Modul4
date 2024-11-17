@@ -27,15 +27,18 @@ export default function RecipeCard({ recipe }: RecipesProps) {
       recipe.image_url;
 
   return (
-    <div className="" key={recipe.id}>
+    <div className="foodcard" key={recipe.id}>
       <img
         src={fullImagePath || "https://placehold.co/600x900"}
         alt="article image"
       />
-      <Link to={`/articles/${recipe.id}`}>
-        <h3 className="font-semibold">{recipe.name}</h3>
+      <h4>{recipe.name}</h4>
+
+      <p>{recipe.description}</p>
+      <Link to={`/recept/${recipe.id}`}>
+        {" "}
+        <button>Zum Rezept</button>
       </Link>
-      <p className="text-neutral-600">{recipe.description}</p>
     </div>
   );
 }

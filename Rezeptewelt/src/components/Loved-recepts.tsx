@@ -24,10 +24,10 @@ export default function LovedRecepts() {
 
   return (
     <section>
-      <h2>Die beliebtesten Rezepte</h2>
+      <h2 className="headline">Die beliebtesten Rezepte</h2>
       <div className="container-loved-recepts">
         {food?.map((food) => (
-          <article>
+          <article className="foodcard">
             <img
               src={
                 food.image_url ||
@@ -37,7 +37,10 @@ export default function LovedRecepts() {
             />
             <h4>{food.name}</h4>
             <p>{food.description}</p>
-            <Link to={`/recept/${food.id}`}> Zum Rezept</Link>
+            <Link to={`/recept/${food.id}`}>
+              {" "}
+              <button>Zum Rezept</button>
+            </Link>
           </article>
         ))}
       </div>
