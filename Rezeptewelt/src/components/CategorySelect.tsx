@@ -29,6 +29,8 @@ export default function CategorySelect({
     );
   }
 
+  console.log(categoriesQuery.data);
+
   return (
     <select onChange={(e) => onChange(e.target.value)} value={value}>
       <option key="all" value="*">

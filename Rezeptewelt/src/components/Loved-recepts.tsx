@@ -27,7 +27,7 @@ export default function LovedRecepts() {
       <h2 className="headline">Die beliebtesten Rezepte</h2>
       <div className="container-loved-recepts">
         {food?.map((food) => (
-          <article className="foodcard">
+          <article key={food.id} className="foodcard">
             <img
               src={
                 food.image_url ||

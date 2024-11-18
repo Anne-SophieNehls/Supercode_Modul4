@@ -46,10 +46,13 @@ export default function DetailPage() {
   const recipe = recipesQuery.data;
 
   return (
-    <section>
+    <section className="detailOutput">
       {/* <p>daten zu {id}</p> */}
-      <div style={{ backgroundImage: `url(${recipe?.image_url})` }}>
-        <h1 className="headline rezept-headlinge">{recipe?.name}</h1>
+      <div
+        className="backgroundImgDetail"
+        style={{ backgroundImage: `url(${recipe?.image_url})` }}
+      >
+        <h1 className="rezept-headline">{recipe?.name}</h1>
       </div>
 
       <p> Portionen: {recipe?.servings}</p>

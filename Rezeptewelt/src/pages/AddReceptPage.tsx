@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
+import ParallaxImg from "../components/parallax-img";
+import CategorySelect from "../components/CategorySelect";
 
 type Ingredient = {
   name: string;
@@ -22,6 +24,7 @@ export default function RecipeCreatePage() {
     description: "",
     servings: 1,
     instructions: "",
+    category_id: "*",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,7 +34,6 @@ export default function RecipeCreatePage() {
       .from("recipes")
       .insert({
         ...recipe,
-        category_id: "6fe705c2-8f3d-45c9-9b0d-7492bf716551",
       })
       .select("id")
       .single();
@@ -46,9 +48,9 @@ export default function RecipeCreatePage() {
     const ingredientsResult = await supabase.from("ingredients").insert(
       ingredients.map((element) => ({
         name: element.name,
-        additional_info: element.additionalInfo,
+        additionalInfo: element.additionalInfo,
         unit: element.unit,
-        quantity: 0,
+        quantity: element.quantity,
         recipe_id: newRecipeId,
       }))
     );
@@ -67,15 +69,9 @@ export default function RecipeCreatePage() {
   return (
     <div>
       {" "}
-      <h3 className="bg-img">
-        Lassen Sie sich inspirieren, kochen Sie mit Leidenschaft und erleben Sie
-        unvergessliche Momente bei Tisch.
-      </h3>
+      <ParallaxImg />
+      <h1 className="headline">New Recipe</h1>
       <form onSubmit={handleSubmit}>
-        <h1>New Recipe</h1>
-        <button>Submit</button>
-        <br />
-        <br />
         <input
           type="text"
           value={recipe.name}
@@ -86,8 +82,8 @@ export default function RecipeCreatePage() {
           placeholder="name"
         />
         <br />
-        <input
-          type="text"
+
+        <textarea
           value={recipe.description}
           onChange={(e) =>
             setRecipe((prev) => ({ ...prev, description: e.target.value }))
@@ -95,8 +91,7 @@ export default function RecipeCreatePage() {
           placeholder="description"
         />
         <br />
-        <input
-          type="text"
+        <textarea
           value={recipe.instructions}
           onChange={(e) =>
             setRecipe((prev) => ({ ...prev, instructions: e.target.value }))
@@ -111,6 +106,12 @@ export default function RecipeCreatePage() {
             setRecipe((prev) => ({ ...prev, servings: Number(e.target.value) }))
           }
           placeholder="servings"
+        />
+        <CategorySelect
+          value={recipe.category_id}
+          onChange={(value) =>
+            setRecipe((prev) => ({ ...prev, category_id: value }))
+          }
         />
         <br />
         <div>
@@ -141,17 +142,6 @@ export default function RecipeCreatePage() {
                     placeholder="name"
                   />
                   <input
-                    type="text"
-                    value={ingredient.unit}
-                    onChange={(e) =>
-                      setIngredient({
-                        ...ingredient,
-                        unit: e.target.value,
-                      })
-                    }
-                    placeholder="unit"
-                  />
-                  <input
                     type="number"
                     value={ingredient.quantity}
                     onChange={(e) =>
@@ -164,6 +154,17 @@ export default function RecipeCreatePage() {
                   />
                   <input
                     type="text"
+                    value={ingredient.unit}
+                    onChange={(e) =>
+                      setIngredient({
+                        ...ingredient,
+                        unit: e.target.value,
+                      })
+                    }
+                    placeholder="unit"
+                  />
+                  <input
+                    type="text"
                     value={ingredient.additionalInfo}
                     onChange={(e) =>
                       setIngredient({
@@ -173,11 +174,13 @@ export default function RecipeCreatePage() {
                     }
                     placeholder="additionalInfo"
                   />
+                  <hr />
                 </div>
               );
             })}
           </div>
         </div>
+        <button>Submit</button>
       </form>
     </div>
   );

@@ -57,8 +57,8 @@ export default function Homepage() {
           />
           <button>Search</button>
         </form>
-        <h3>Here ist the search result </h3>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <h3 className="headline">hier sind die Suchergebnisse </h3>
+        <div className="search-output">
           {recipes.data?.map((recipe) => (
             <RecipeCard key={recipe.id} recipe={recipe} />
           ))}

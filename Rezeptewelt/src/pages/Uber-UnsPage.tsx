@@ -6,39 +6,73 @@ export default function AboutUsPage() {
       <ParallaxImg />
       <br />
       <div className="about-us--container">
+        <h5>Meine kulinarische Reise durch den Web-Code</h5>
         <p>
-          Hallo, wir sind Amanda und Pedro und freuen uns, unsere Arbeit auf
-          Rezeptwelt vorstellen zu können. Bei der Erkundung dieser
-          erstaunlichen Website haben wir ein gastronomisches Universum voller
-          köstlicher Rezepte, nützlicher Tipps und kulinarischer Inspiration
-          entdeckt. Rezeptwelt ist ein Ort, an dem sich erfahrene Köche und
-          Kochanfänger in ihrer Leidenschaft für das Essen vereinen können.
+          Hallo liebe Foodies und Tech-Enthusiasten! Ich freue mich sehr, euch
+          meine neueste Kreation vorzustellen: die Rezeptwelt, die nicht nur das
+          Herz von Kochbegeisterten höher schlagen lässt, sondern auch einen
+          Einblick in die faszinierende Welt der Webentwicklung gibt. Dieses
+          Projekt entstand im Rahmen meines "Full Stack Web-Developer" Kurses
+          bei Supercode und ist das Ergebnis meiner Leidenschaft für Essen und
+          Technologie.
+        </p>
+        <br />
+        <h5>Warum eine Rezepte-Website?</h5>
+        <p>
+          Essen ist mehr als nur Nahrungsaufnahme. Es ist ein Erlebnis, das alle
+          Sinne anspricht und uns mit Menschen verbindet. Ob ein
+          selbstgebackenes Brot, ein aromatisches Curry oder ein einfacher Salat
+          – das Kochen ist für mich eine wunderbare Möglichkeit, Kreativität
+          auszuleben und Freude zu schenken. Mit dieser Website möchte ich meine
+          Begeisterung für die Küche teilen und anderen die Möglichkeit geben,
+          neue Rezepte zu entdecken und auszuprobieren.
         </p>
         <br />
         <p>
-          Was uns besonders begeistert hat, war die Vielfalt der Rezepte. Von
-          traditionellen, gemütlichen Gerichten bis hin zu innovativeren
-          Kreationen gibt es Optionen für jeden Geschmack und jede Gelegenheit.
-          Jedes Rezept wird sorgfältig ausgewählt und getestet, um
-          sicherzustellen, dass die Ergebnisse stets schmackhaft sind und es
-          sich lohnt, sie zu teilen.
+          <h5>Die Technik hinter dem Genuss</h5>
+          Um diese kulinarische Plattform zum Leben zu erwecken, habe ich mich
+          für die leistungsstarke Kombination aus React und Supabase
+          entschieden. React, eine beliebte JavaScript-Bibliothek, sorgt für
+          eine dynamische und benutzerfreundliche Oberfläche. Supabase, eine
+          Open-Source-Alternative zu Firebase, übernimmt die Rolle des Backends
+          und bietet eine einfache Möglichkeit, Nutzer zu authentifizieren und
+          Rezepte zu speichern.
         </p>
         <br />
         <p>
-          Neben den Rezepten bietet Rezeptwelt auch nützliche Tipps zur
-          Verbesserung der eigenen Kochkünste. Von Zubereitungstechniken bis hin
-          zu Vorschlägen für Geschmackskombinationen - die Website lädt zum
-          Entdecken und Experimentieren in der Küche ein. Es ist eine gemütliche
-          und integrative Umgebung, in der jeder ermutigt wird, in die Kunst des
-          Kochens einzutauchen und neue Möglichkeiten zu entdecken.
+          <h5>Was erwartet dich auf meiner Website?</h5>
+          <ul>
+            <li>
+              <b>Rezepte für jeden Geschmack: </b>
+              <p>
+                Ob du ein erfahrener Koch oder ein Anfänger bist, hier findest
+                du eine vielfältige Auswahl an Rezepten für jeden Anlass.
+              </p>
+            </li>
+            <li>
+              <b>Community-Feeling: </b>
+              <p>
+                Teile deine eigenen Kreationen mit anderen Nutzern und lass dich
+                von neuen Ideen inspirieren.
+              </p>
+            </li>
+            <li>
+              <b>Personalisierte Empfehlungen: </b>
+              <p>
+                Dank der intelligenten Suchfunktion findest du schnell die
+                passenden Rezepte für deine Vorlieben.
+              </p>
+            </li>
+          </ul>
         </p>
         <br />
+        <h5>Warum ich stolz auf dieses Projekt bin</h5>
         <p>
-          Kurz gesagt, Rezeptwelt ist ein inspirierender gastronomischer Raum,
-          der uns einlädt, unsere Leidenschaft für das Kochen zu entdecken, zu
-          kreieren und zu teilen. Wir hoffen, dass unsere Präsentation Ihr
-          Interesse geweckt hat, sich mit uns auf diese köstliche Reise in die
-          Rezeptwelt zu begeben!
+          Die Entwicklung dieser Rezepte-Website war für mich eine spannende
+          Reise. Ich habe viel über React, Supabase und die Grundlagen der
+          Webentwicklung gelernt. Aber das Wichtigste ist, dass ich ein Projekt
+          geschaffen habe, das mich selbst begeistert und hoffentlich auch
+          andere anspricht.
         </p>
       </div>
       <br />

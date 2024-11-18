@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useUserContext } from "../context/userContext";
 import { supabase, getStorageURL } from "../lib/supabase";
 import { Link } from "react-router-dom";
+import ParallaxImg from "../components/parallax-img";
 
 export default function OwnProfilPage() {
   const { user } = useUserContext();
@@ -11,9 +12,6 @@ export default function OwnProfilPage() {
   const [vorname, setVorname] = useState<string | null>("");
   const [nachname, setNachname] = useState<string | null>("");
   const [nickname, setNickname] = useState<string | null>("");
-
-  //! Wird schon 👍
-  // :)
   const [profilImg, setprofilImg] = useState<string | null>(null);
 
   const getUserData = async () => {
@@ -51,10 +49,11 @@ export default function OwnProfilPage() {
 
   return (
     <div>
+      <ParallaxImg />
       <h2 className="headline">Profil</h2>
       <div>
         <div>
-          <div>
+          <div className="profil-container">
             <img
               src={
                 imageURL ||
@@ -77,7 +76,11 @@ export default function OwnProfilPage() {
             <input type="text" placeholder="Vornamen" />
             <input type="text" placeholder="Nachnamen" />
             <input type="text" placeholder="Nicknamen" />
-            <input type="file" ref={fileRef} />
+            <label htmlFor="uploadProfilImg">
+              {" "}
+              upload your new Profil image hiere:
+            </label>
+            <input id="uploadProfilImg" type="file" ref={fileRef} />
             <button onClick={handleFileUpload}>Upload new Profil </button>
           </form>
         </div>

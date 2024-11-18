@@ -21,10 +21,9 @@ interface RecipesProps {
 }
 
 export default function RecipeCard({ recipe }: RecipesProps) {
-  const fullImagePath =
-    recipe.image_url &&
-    "yazwsnizznmnsscpkani.supabase.co/storage/v1/object/public/" +
-      recipe.image_url;
+  const fullImagePath = recipe.image_url;
+  /* && "yazwsnizznmnsscpkani.supabase.co/storage/v1/object/public/" +
+      recipe.image_url; */
 
   return (
     <div className="foodcard" key={recipe.id}>
