@@ -4,12 +4,15 @@ import { supabase } from "../lib/supabase";
 import { Popover, PopoverTrigger } from "@radix-ui/react-popover";
 import { Button } from "./ui/button";
 import { PopoverContent } from "./ui/popover";
+import { useQueryClient } from "node_modules/@tanstack/react-query/build/legacy";
 
 export default function Layout() {
   const { user, setUser } = useUserContext();
-  const handleLogoutClick = () => {
+  const queryClient = useQueryClient();
+  const handleLogoutClick = async () => {
     setUser(null);
-    supabase.auth.signOut();
+    await supabase.auth.signOut();
+    queryClient.invalidateQueries();
   };
   return (
     <div>

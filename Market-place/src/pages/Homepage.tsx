@@ -26,7 +26,8 @@ function HomePage() {
           ),
             profiles (
       id,
-      first_name)
+      first_name),
+      favorites(*),
     `
         )
         //.lt("price", 100000) // WHERE price < 1000
@@ -59,6 +60,7 @@ function HomePage() {
 
   return (
     <div>
+      {/*       <Meta /> */}
       <div>
         <form onSubmit={handleSearch} className="my-6 flex gap-2">
           <Input

@@ -8,6 +8,12 @@ export default function ArticleDetailPage() {
   const articleQuery = useQuery({
     queryKey: ["articles", "singleArticle", id],
 
+    /*     useEffect(()=>{
+      if(articleQuery.isSuccess){
+        document.title = articleQuery.data.titel
+      }
+    }) */
+
     queryFn: async () => {
       const result = await supabase
         .from("articles")
@@ -46,6 +52,7 @@ export default function ArticleDetailPage() {
 
   return (
     <div>
+      <Meta titel={article.title} />
       <p>Guten Tag, ich bin {id}</p>
       <h1>{article.title}</h1>
       <p>{article.status}</p>
